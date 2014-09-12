@@ -8,24 +8,38 @@ class FoodChainSong
   attr_accessor :num
 
   def verse(num)
-    @num = num
     @type = NUM_TO_TYPE[num]
+
     if num == 1
       string = [first_line, last_line].join("\n")
     elsif num == 2
       string = [first_line, SLOGAN[num], second_to_last_line, last_line].join("\n")
+    elsif num == 3
+      string = [first_line, SLOGAN[num], third_to_last_line, second_to_last_line, last_line ].join("\n")
+    elsif num == 4
+      string = [first_line, SLOGAN[num], fourth_to_last_line, third_to_last_line, second_to_last_line, last_line ].join("\n")
+    elsif num == 5
+      string = [first_line, SLOGAN[num], fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
+    elsif num == 6
+      string = [first_line, SLOGAN[num], sixth_to_last_line, fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
+    elsif num == 7
+      string = [first_line, SLOGAN[num], seventh_to_last_line, sixth_to_last_line, fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
+    elsif num == 8
+      string = [first_line, SLOGAN[num]].join("\n")
     end
     final_string = string << "\n"
+  end
+
+  def verses(first_verse, second_verse)
+    song = [verse(first_verse), verse(second_verse)].join("\n")
   end
 
   def type_minus_one
     NUM_TO_TYPE[num - 1]
   end
 
-  def song
-    def verse(verse_num)
-     return ("I know an old lady who swallowed a fly.\nI don't know why she swallowed the fly. Perhaps she'll die.\n").verse_num.times
-    end
+  def lines
+
   end
 
   def first_line
@@ -36,7 +50,29 @@ class FoodChainSong
     "She swallowed the spider to catch the fly."
   end
 
+  def third_to_last_line
+    "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her."
+  end
+
+  def fourth_to_last_line
+    "She swallowed the cat to catch the bird."
+  end
+
+  def fifth_to_last_line
+     "She swallowed the dog to catch the cat."
+  end
+
+  def sixth_to_last_line
+    "She swallowed the goat to catch the dog."
+  end
+
+  def seventh_to_last_line
+    "She swallowed the cow to catch the goat."
+  end
+
   def last_line
     "I don't know why she swallowed the fly. Perhaps she'll die."
   end
+
+
 end
