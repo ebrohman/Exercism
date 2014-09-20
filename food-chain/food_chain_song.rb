@@ -1,78 +1,64 @@
 class FoodChainSong
 
-  NUM_TO_TYPE = { 1 => "fly", 2 => "spider", 3 => "bird", 4 => "cat", 5 => "dog", 6 => "goat", 7 => "cow", 8 => "horse"}
-
-  SLOGAN = { 1 => "", 2 => "It wriggled and jiggled and tickled inside her.", 3 => "How absurd to swallow a bird!", 4 => "Imagine that, to swallow a cat!", 5 => "What a hog, to swallow a dog!", 6 => "Just opened her throat and swallowed a goat!", 7 => "I don't know how she swallowed a cow!", 8 => "She's dead, of course!" }
-
-  attr_accessor :type
-  attr_accessor :num
+  def initialize
+    @lyrics = { 1 =>  "I know an old lady who swallowed a fly.\nI don't know why she swallowed the fly. Perhaps she'll die.\n",
+                2 =>  "I know an old lady who swallowed a spider.\nIt wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. Perhaps she'll die.\n",
+                3 =>  "I know an old lady who swallowed a bird.\n" +
+                      "How absurd to swallow a bird!\n" +
+                      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. Perhaps she'll die.\n",
+                4 =>  "I know an old lady who swallowed a cat.\n" +
+                      "Imagine that, to swallow a cat!\n" +
+                      "She swallowed the cat to catch the bird.\n" +
+                      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. " +
+                      "Perhaps she'll die.\n",
+                5 =>  "I know an old lady who swallowed a dog.\n" +
+                      "What a hog, to swallow a dog!\n" +
+                      "She swallowed the dog to catch the cat.\n" +
+                      "She swallowed the cat to catch the bird.\n" +
+                      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. " +
+                      "Perhaps she'll die.\n",
+                6 =>  "I know an old lady who swallowed a goat.\n" +
+                      "Just opened her throat and swallowed a goat!\n" +
+                      "She swallowed the goat to catch the dog.\n" +
+                      "She swallowed the dog to catch the cat.\n" +
+                      "She swallowed the cat to catch the bird.\n" +
+                      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. " +
+                      "Perhaps she'll die.\n",
+                7 =>  "I know an old lady who swallowed a cow.\n" +
+                      "I don't know how she swallowed a cow!\n" +
+                      "She swallowed the cow to catch the goat.\n" +
+                      "She swallowed the goat to catch the dog.\n" +
+                      "She swallowed the dog to catch the cat.\n" +
+                      "She swallowed the cat to catch the bird.\n" +
+                      "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n" +
+                      "She swallowed the spider to catch the fly.\n" +
+                      "I don't know why she swallowed the fly. " +
+                      "Perhaps she'll die.\n",
+                8 =>  "I know an old lady who swallowed a horse.\n" +
+                      "She's dead, of course!\n"}
+  end
 
   def verse(num)
-    @type = NUM_TO_TYPE[num]
-
-    if num == 1
-      string = [first_line, last_line].join("\n")
-    elsif num == 2
-      string = [first_line, SLOGAN[num], second_to_last_line, last_line].join("\n")
-    elsif num == 3
-      string = [first_line, SLOGAN[num], third_to_last_line, second_to_last_line, last_line ].join("\n")
-    elsif num == 4
-      string = [first_line, SLOGAN[num], fourth_to_last_line, third_to_last_line, second_to_last_line, last_line ].join("\n")
-    elsif num == 5
-      string = [first_line, SLOGAN[num], fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
-    elsif num == 6
-      string = [first_line, SLOGAN[num], sixth_to_last_line, fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
-    elsif num == 7
-      string = [first_line, SLOGAN[num], seventh_to_last_line, sixth_to_last_line, fifth_to_last_line, fourth_to_last_line, third_to_last_line, second_to_last_line, last_line].join("\n")
-    elsif num == 8
-      string = [first_line, SLOGAN[num]].join("\n")
-    end
-    final_string = string << "\n"
+    x = @lyrics[num]
   end
 
-  def verses(first_verse, second_verse)
-    song = [verse(first_verse), verse(second_verse)].join("\n")
+  def verses(first_verse, last_verse)
+    @song = ""
+    (first_verse..last_verse).map {|x| @song << @lyrics[x] + "\n"}
+    return @song
   end
 
-  def type_minus_one
-    NUM_TO_TYPE[num - 1]
+  def sing
+    x = verses(1, 8)
   end
-
-  def lines
-
-  end
-
-  def first_line
-    "I know an old lady who swallowed a #{type}."
-  end
-
-  def second_to_last_line
-    "She swallowed the spider to catch the fly."
-  end
-
-  def third_to_last_line
-    "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her."
-  end
-
-  def fourth_to_last_line
-    "She swallowed the cat to catch the bird."
-  end
-
-  def fifth_to_last_line
-     "She swallowed the dog to catch the cat."
-  end
-
-  def sixth_to_last_line
-    "She swallowed the goat to catch the dog."
-  end
-
-  def seventh_to_last_line
-    "She swallowed the cow to catch the goat."
-  end
-
-  def last_line
-    "I don't know why she swallowed the fly. Perhaps she'll die."
-  end
-
-
 end

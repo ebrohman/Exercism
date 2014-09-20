@@ -98,7 +98,6 @@ class FoodChainTest < MiniTest::Unit::TestCase
   end
 
   def test_the_whole_song
-    skip
     assert_equal song.verses(1, 8), song.sing
   end
 end
